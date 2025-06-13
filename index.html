@@ -7,21 +7,17 @@
     <style>
         /* Part 1: The Overall Scene (The Desk) */
         body {
-            /* A nice, simple desk background. We can change this later. */
             background-color: #3d352a;
             background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/wood-pattern.png');
             margin: 0;
             padding: 20px;
-            font-family: sans-serif; /* We'll add your custom font later */
-
-            /* This centers everything on the page */
+            font-family: sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* This is a helper class. Anything with this class will be hidden. */
         .hidden {
             display: none !important;
         }
@@ -30,89 +26,191 @@
         #diary-cover {
             width: 500px;
             height: 700px;
-            /* A shadow to make it look like it's sitting on the desk */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            cursor: pointer; /* Changes the mouse to a hand to show it's clickable */
-            transition: transform 0.2s ease; /* A nice little effect for when you hover */
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
         
         #diary-cover:hover {
-            transform: scale(1.02); /* Makes the cover slightly bigger on hover */
+            transform: scale(1.02);
         }
 
         /* Part 3: The Open Diary */
         #diary-open {
-            width: 80vw; /* 80% of the screen width */
+            width: 80vw;
             max-width: 1100px;
-            height: 80vh; /* 80% of the screen height */
+            height: 80vh;
             max-height: 700px;
-            background-color: #FDFBF7; /* Placeholder paper color */
+            background-color: #FDFBF7;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: flex; /* This creates the two-page layout */
+            display: flex;
+            /* We use flex-direction column to stack the content on top of the navigation */
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* This new wrapper will hold all the flipping pages */
+        #content-wrapper {
+            display: flex;
+            flex-grow: 1; /* This makes the content take up all available space */
         }
 
         .page {
-            flex: 1; /* Each page takes up half the diary space */
+            flex: 1;
             padding: 40px;
             box-sizing: border-box;
-            position: relative;
-            overflow: auto; /* Adds a scrollbar if a page has too much text */
+            overflow: hidden; /* Changed from 'auto' to prevent scrolling */
         }
 
         .left-page {
-            border-right: 2px solid #D3CFC7; /* The line in the middle of the book */
+            border-right: 2px solid #D3CFC7;
         }
 
-        h1 {
-            font-size: 2em;
-            margin-bottom: 1em;
+        h1 { font-size: 2em; margin-bottom: 1em; }
+        p { font-size: 1.1em; line-height: 1.8; }
+
+        /* NEW: Part 4: Navigation Buttons */
+        #navigation {
+            padding: 10px;
+            text-align: center;
+            border-top: 1px solid #eee;
         }
 
-        p {
-            font-size: 1.1em;
-            line-height: 1.8;
+        #navigation button {
+            background-color: #fdfbf7;
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        #navigation button:hover {
+            background-color: #f0ebe5;
+        }
+
+        /* This class will be used to gray out buttons when they can't be used */
+        #navigation button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
         }
 
     </style>
 </head>
 <body>
 
-    <!-- This is the placeholder for your closed diary cover. -->
-    <!-- We are using a placeholder image from the internet for now. -->
+    <!-- Placeholder for your closed diary cover. This part is the same. -->
     <img id="diary-cover" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1887" alt="A closed diary. Click to open.">
 
-    <!-- This is the open diary. It's hidden at the start. -->
+    <!-- The open diary. It's hidden at the start. -->
     <div id="diary-open" class="hidden">
         
-        <!-- This is the container for all our page spreads. -->
-        <div class="page left-page">
-            <h1>(1) The Introduction</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</p>
-        </div>
-        <div class="page right-page">
-            <h1>(2) The Diagnosis</h1>
-            <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor.</p>
+        <!-- This wrapper now holds all the different spreads -->
+        <div id="content-wrapper">
+            
+            <!-- SPREAD 1: The Introduction (Now takes up both pages) -->
+            <div class="diary-spread" data-spread-index="0">
+                <div class="page left-page">
+                    <h1>(1) The Introduction</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                </div>
+                <div class="page right-page">
+                    <p>Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.</p>
+                </div>
+            </div>
+
+            <!-- SPREAD 2: The Diagnosis (Hidden by default) -->
+            <div class="diary-spread hidden" data-spread-index="1">
+                <div class="page left-page">
+                    <h1>(2) The Diagnosis</h1>
+                    <p>Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue.</p>
+                </div>
+                <div class="page right-page">
+                    <p>Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+                </div>
+            </div>
+
+            <!-- SPREAD 3: The Failure (Hidden by default) -->
+            <div class="diary-spread hidden" data-spread-index="2">
+                <div class="page left-page">
+                    <h1>(3) The Failure</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+                </div>
+                <div class="page right-page">
+                    <p>Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.</p>
+                </div>
+            </div>
+
         </div>
         
-        <!-- Later, we will add more diary spreads and navigation buttons here -->
+        <!-- NEW: This is the navigation bar at the bottom -->
+        <div id="navigation">
+            <button id="prev-btn">Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
     </div>
 
-    <!-- This is the JavaScript that makes it interactive -->
+    <!-- The JavaScript has been upgraded to handle page turning -->
     <script>
-        // Find the diary cover element on the page
+        // Find all the elements we need to control
         const diaryCover = document.getElementById('diary-cover');
-        
-        // Find the open diary element on the page
         const openDiary = document.getElementById('diary-open');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const allSpreads = document.querySelectorAll('.diary-spread');
 
-        // Listen for a click on the diary cover
-        diaryCover.addEventListener('click', function() {
-            // When clicked, add the 'hidden' class to the cover to make it disappear
-            diaryCover.classList.add('hidden');
+        // A variable to keep track of which spread we are on
+        let currentSpreadIndex = 0;
+
+        // --- FUNCTIONS (The "How-To" instructions for our crew) ---
+
+        // Function to show a specific spread and hide the others
+        function showSpread(index) {
+            allSpreads.forEach(spread => {
+                spread.classList.add('hidden'); // Hide all spreads
+            });
+            const spreadToShow = document.querySelector(`.diary-spread[data-spread-index="${index}"]`);
+            if (spreadToShow) {
+                spreadToShow.classList.remove('hidden'); // Show the correct one
+            }
+            updateButtons();
+        }
+        
+        // Function to enable/disable the Next/Prev buttons
+        function updateButtons() {
+            // If we are on the first page (index 0), disable "Previous"
+            prevBtn.disabled = (currentSpreadIndex === 0);
             
-            // And remove the 'hidden' class from the open diary to make it appear
+            // If we are on the last page, disable "Next"
+            nextBtn.disabled = (currentSpreadIndex === allSpreads.length - 1);
+        }
+
+        // --- EVENT LISTENERS (The "When to do it" instructions) ---
+
+        // When the diary cover is clicked...
+        diaryCover.addEventListener('click', function() {
+            diaryCover.classList.add('hidden');
             openDiary.classList.remove('hidden');
+            showSpread(currentSpreadIndex); // Show the very first spread
         });
+
+        // When the "Next" button is clicked...
+        nextBtn.addEventListener('click', function() {
+            if (currentSpreadIndex < allSpreads.length - 1) {
+                currentSpreadIndex++;
+                showSpread(currentSpreadIndex);
+            }
+        });
+
+        // When the "Previous" button is clicked...
+        prevBtn.addEventListener('click', function() {
+            if (currentSpreadIndex > 0) {
+                currentSpreadIndex--;
+                showSpread(currentSpreadIndex);
+            }
+        });
+
     </script>
 
 </body>
