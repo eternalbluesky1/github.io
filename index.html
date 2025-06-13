@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Diary by Phát Bùi</title>
-    <!-- HIRING THE OLDER, COMPATIBLE ASSISTANT (jQuery 1.9.1) -->
+    <!-- Using the older, compatible jQuery library -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!-- HIRING THE SAME SPECIALIST -->
+    <!-- Using the turn.js library -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
 
     <style>
@@ -20,30 +20,25 @@
             margin: 0;
             overflow: hidden;
         }
-
         #diary-container {
             width: 80vw;
             max-width: 1100px;
             height: 80vh;
             max-height: 700px;
         }
-
         #diary {
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-
         #diary .page {
             background-color: #FDFBF7;
             padding: 40px;
             box-sizing: border-box;
         }
-        
         #diary .cover-page {
             background-color: #333;
             display: flex; justify-content: center; align-items: center;
             color: white; font-size: 2em;
         }
-        
         h1 { font-size: 2em; margin-bottom: 1em; }
         p { font-size: 1.1em; line-height: 1.8; }
     </style>
@@ -63,18 +58,19 @@
         </div>
     </div>
 
-    <!-- The JavaScript now has diagnostic messages -->
+    <!-- The JavaScript now uses the standard, more reliable jQuery "ready" function -->
     <script type="text/javascript">
-        // Using window.onload to make sure everything (images, etc.) is ready
-        window.onload = function() {
-            console.log("Page has finished loading. Attempting to start diary...");
+        // This is the new, better starting signal. It waits for the DOM and jQuery to be fully ready.
+        $(function() {
+            console.log("jQuery is ready. Attempting to start diary...");
 
             const container = $('#diary-container');
             const bookWidth = container.width();
             const bookHeight = container.height();
 
-            if (bookWidth > 0 && typeof $.fn.turn !== 'undefined') {
-                console.log("Success! Turn.js library is loaded and container has size.");
+            // This condition checks if the turn.js function exists
+            if (typeof $.fn.turn !== 'undefined') {
+                console.log("Success! Turn.js library is loaded.");
                 console.log("Initializing diary with width:", bookWidth, "and height:", bookHeight);
 
                 $('#diary').turn({
@@ -86,9 +82,9 @@
                     gradients: true
                 });
             } else {
-                console.error("ERROR: Turn.js library failed to load or container has no size.");
+                console.error("ERROR: Turn.js library function was not found.");
             }
-        };
+        });
     </script>
 
 </body>
