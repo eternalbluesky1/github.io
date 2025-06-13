@@ -20,27 +20,24 @@
             overflow: hidden; /* Prevents scrollbars */
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        /* This is the container for the diary */
+        /* This is the container that DEFINES the size of our diary */
         #diary-container {
-            width: 90vw;
-            height: 90vh;
+            width: 80vw;
+            max-width: 1100px;
+            height: 80vh;
+            max-height: 700px;
             position: relative;
         }
 
-        /* This is the book itself that will have the turn effect */
+        /* The book itself will have its size set by JavaScript, not CSS */
         #diary {
-            width: 100%;
-            height: 100%;
+            /* We removed the width and height from here */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         /* Styles for each individual page inside the diary */
         #diary .page {
             background-color: #FDFBF7; /* Placeholder paper color */
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* Inner shadow for depth */
             padding: 40px;
             box-sizing: border-box;
         }
@@ -48,6 +45,11 @@
         /* The cover page will have your image */
         #diary .cover-page {
             background-color: #333; /* Placeholder cover color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2em;
         }
         
         h1 { font-size: 2em; margin-bottom: 1em; }
@@ -60,7 +62,7 @@
         <div id="diary">
             <!-- Page 1: Front Cover -->
             <div class="cover-page">
-                <h1>Click to Open</h1>
+                <p>My Diary</p>
             </div>
 
             <!-- Page 2: Inside Front Cover (can be blank or have content) -->
@@ -96,16 +98,22 @@
         </div>
     </div>
 
+    <!-- The JavaScript has been upgraded to give EXACT measurements -->
     <script type="text/javascript">
-        // This is how we tell our specialist, turn.js, to do its magic
         $(document).ready(function(){
+            // Step 1: Measure the container
+            const container = $('#diary-container');
+            const bookWidth = container.width();
+            const bookHeight = container.height();
+
+            // Step 2: Give the EXACT measurements to our specialist
             $('#diary').turn({
-                width: '100%',
-                height: '100%',
+                width: bookWidth,
+                height: bookHeight,
                 autoCenter: true,
-                acceleration: true, // Speeds up the animation on modern devices
-                elevation: 50, // The "lift" of the page when turning
-                gradients: true // Adds realistic shading to the page curl
+                acceleration: true,
+                elevation: 50,
+                gradients: true
             });
         });
     </script>
