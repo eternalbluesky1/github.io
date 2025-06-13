@@ -3,109 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio Diary</title>
+    <title>A Diary by Phát Bùi</title>
     <style>
-        /* Import a font that looks like handwriting or a classic typewriter */
-        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-
-        /* This is where you would put your custom font later */
-        /* @font-face {
-            font-family: 'MyHandwriting';
-            src: url('path/to/your/fontfile.ttf'); 
-        } */
-
+        /* Part 1: The Overall Scene (The Desk) */
         body {
-            /* The Wooden Desk Background */
+            /* A nice, simple desk background. We can change this later. */
+            background-color: #3d352a;
             background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/wood-pattern.png');
-            background-color: #6B4F3A; /* A fallback color */
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            font-family: sans-serif; /* We'll add your custom font later */
+
+            /* This centers everything on the page */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: 'Special Elite', monospace; /* Using the imported font */
         }
 
-        .diary {
-            /* The main diary container */
-            width: 80vw; /* 80% of the viewport width */
-            max-width: 1100px; /* Max width so it doesn't get too big */
-            height: 80vh; /* 80% of the viewport height */
+        /* This is a helper class. Anything with this class will be hidden. */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Part 2: The Closed Diary Cover */
+        #diary-cover {
+            width: 500px;
+            height: 700px;
+            /* A shadow to make it look like it's sitting on the desk */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            cursor: pointer; /* Changes the mouse to a hand to show it's clickable */
+            transition: transform 0.2s ease; /* A nice little effect for when you hover */
+        }
+        
+        #diary-cover:hover {
+            transform: scale(1.02); /* Makes the cover slightly bigger on hover */
+        }
+
+        /* Part 3: The Open Diary */
+        #diary-open {
+            width: 80vw; /* 80% of the screen width */
+            max-width: 1100px;
+            height: 80vh; /* 80% of the screen height */
             max-height: 700px;
-            background-color: #FDFBF7; /* The color of the paper */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* The shadow to lift it off the desk */
-            display: flex;
-            position: relative;
-            /* This gives it the slight skew you wanted */
-            transform: rotate(-2deg);
+            background-color: #FDFBF7; /* Placeholder paper color */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex; /* This creates the two-page layout */
         }
 
         .page {
-            /* Styling for both left and right pages */
             flex: 1; /* Each page takes up half the diary space */
             padding: 40px;
             box-sizing: border-box;
             position: relative;
-            color: #333;
-            line-height: 1.8em; /* Spacing between lines of text */
-            overflow: auto; /* Adds a scrollbar if content is too long */
+            overflow: auto; /* Adds a scrollbar if a page has too much text */
         }
 
         .left-page {
-            border-right: 1px solid #D3CFC7; /* The line in the middle of the book */
-        }
-
-        /* The magic for the ruled lines */
-        .page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: repeating-linear-gradient(to bottom, transparent, transparent 1.7em, #E0DCD5 1.7em, #E0DCD5 1.8em);
-            background-size: 100% 1.8em;
-            z-index: -1; /* Puts the lines behind the text */
-            opacity: 0.6;
+            border-right: 2px solid #D3CFC7; /* The line in the middle of the book */
         }
 
         h1 {
-            /* Your main title style */
             font-size: 2em;
-            text-align: center;
-            margin-bottom: 2em;
-            /* To use your custom font later, you'd change the font-family here */
-            /* font-family: 'MyHandwriting', sans-serif; */
+            margin-bottom: 1em;
         }
 
         p {
             font-size: 1.1em;
+            line-height: 1.8;
         }
+
     </style>
 </head>
 <body>
 
-    <div class="diary">
+    <!-- This is the placeholder for your closed diary cover. -->
+    <!-- We are using a placeholder image from the internet for now. -->
+    <img id="diary-cover" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1887" alt="A closed diary. Click to open.">
+
+    <!-- This is the open diary. It's hidden at the start. -->
+    <div id="diary-open" class="hidden">
+        
+        <!-- This is the container for all our page spreads. -->
         <div class="page left-page">
-            <h1>(1) Intro</h1>
-            <p>
-                This is the story of my clumsy journey. As you noted in your ideation, this is where the prologue goes. I wanted to create something that wasn't just a list of skills, but a narrative that shows my growth and how I got here.
-            </p>
-            <p>
-                This first page sets the scene, capturing the feeling of opening an old diary, ready to draw some lessons from the past.
-            </p>
+            <h1>(1) The Introduction</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.</p>
         </div>
         <div class="page right-page">
-            <h1>(2) What Happened to Me?</h1>
-            <p>
-                Here, I can dive into specifics. I can talk about the "failed choices/diagnosis" and the "experience on" that shaped my path. Each paragraph is like a journal entry, a moment of reflection.
-            </p>
-            <p>
-                This section isn't about listing jobs; it's about the story behind the resume points. It is the beginning of the realization that I needed to move to a new environment.
-            </p>
+            <h1>(2) The Diagnosis</h1>
+            <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor.</p>
         </div>
+        
+        <!-- Later, we will add more diary spreads and navigation buttons here -->
     </div>
+
+    <!-- This is the JavaScript that makes it interactive -->
+    <script>
+        // Find the diary cover element on the page
+        const diaryCover = document.getElementById('diary-cover');
+        
+        // Find the open diary element on the page
+        const openDiary = document.getElementById('diary-open');
+
+        // Listen for a click on the diary cover
+        diaryCover.addEventListener('click', function() {
+            // When clicked, add the 'hidden' class to the cover to make it disappear
+            diaryCover.classList.add('hidden');
+            
+            // And remove the 'hidden' class from the open diary to make it appear
+            openDiary.classList.remove('hidden');
+        });
+    </script>
 
 </body>
 </html>
