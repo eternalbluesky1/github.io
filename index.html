@@ -36,10 +36,8 @@
             line-height: 1.8;
         }
         #diary .cover-page {
-            background-color: #333; /* We will replace this with your photo */
+            background-color: #333;
         }
-        
-        /* Style for the visible page corners */
         #diary .turn-page-wrapper .corner {
             background-color: #fff;
             opacity: 0.4;
@@ -49,66 +47,63 @@
         #diary .turn-page-wrapper .corner.hover {
             opacity: 0.8;
         }
-
         h1 { font-size: 2em; margin-bottom: 1em; }
     </style>
 </head>
 <body>
 
     <div id="diary-container">
+        <!-- The library will work on this div. It only contains page divs. -->
         <div id="diary">
             
-            <!-- ====================================================== -->
-            <!-- FRONT COVER                                            -->
-            <!-- ====================================================== -->
-            <!-- We will replace this div later with your actual cover photo -->
+            <!-- Page 1: Front Cover -->
             <div class="cover-page"></div>
 
-            <!-- Inside front cover - intentionally blank -->
+            <!-- Page 2: Inside front cover (intentionally blank) -->
             <div class="page"></div>
 
-            <!-- ====================================================== -->
-            <!-- SPREAD 1: Introduction (Part 1 & 2)                    -->
-            <!-- ====================================================== -->
-            <!-- Left Page -->
+            <!-- Page 3 & 4: Spread 1 -->
             <div class="page">
                 <h1>(1) The Introduction</h1>
-                <p>[Your text for Part 1 goes here. This is where you feel lost, disconnected from your past achievements, and ask "What happened to me?"]</p>
+                <p>[Your text for Part 1 goes here. This is where you feel lost and ask "What happened to me?"]</p>
             </div>
-            <!-- Right Page -->
             <div class="page">
                 <h1>(2) The Diagnosis</h1>
-                <p>[Your text for Part 2 goes here. The raw shock of the diagnosis and the decision to cling to VGU as the only way out.]</p>
+                <p>[Your text for Part 2 goes here. The shock of the diagnosis and clinging to VGU.]</p>
             </div>
 
-            <!-- ====================================================== -->
-            <!-- SPREAD 2: The Failure (Part 3 & 4)                     -->
-            <!-- ====================================================== -->
-            <!-- Left Page -->
+            <!-- Page 5 & 6: Spread 2 -->
             <div class="page">
                 <h1>(3) The Failure</h1>
-                <p>[Your text for Part 3 goes here. The low point at VGU, the loneliness, the concrete walls, and the feeling of doing everything right but still failing.]</p>
+                <p>[Your text for Part 3 goes here. The low point at VGU.]</p>
             </div>
-            <!-- Right Page -->
             <div class="page">
                 <h1>(4) The Pivot</h1>
-                <p>[Your text for Part 4 goes here. The short, defiant spark. The "Sisyphus" moment. The refusal to give up, ending with "What am I capable of?"]</p>
+                <p>[Your text for Part 4 goes here. The defiant spark and the refusal to give up.]</p>
+            </div>
+            
+            <!-- Page 7 & 8: Spread 3 -->
+            <div class="page">
+                <h1>(5) The New Direction</h1>
+                <p>[Your text for Part 5 goes here. Discovering RMIT and a new purpose.]</p>
+            </div>
+             <div class="page">
+                <h1>(6) The Resolve</h1>
+                <p>[Your text for Part 6 goes here. Re-interpreting your skills as proof of resilience.]</p>
             </div>
 
-            <!-- ====================================================== -->
-            <!-- And so on... you can add more spreads following this pattern -->
-            <!-- ====================================================== -->
+            <!-- And so on... you can add more pairs of pages here -->
 
-
-            <!-- Inside back cover - intentionally blank -->
+            <!-- Page N-1: Inside back cover (intentionally blank) -->
             <div class="page"></div>
-
-            <!-- Back cover -->
+            
+            <!-- Page N: Back Cover -->
             <div class="cover-page"></div>
         </div>
     </div>
 
     <script type="text/javascript">
+        // This is the definitive, working script.
         $(function() {
             $('#diary').turn({
                 width: $('#diary-container').width(),
