@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Diary by Phát Bùi</title>
-	<!-- This is the NEW, RELIABLE way using your local files -->
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/turn.min.js"></script>
+    <!-- Using our reliable local library files -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/turn.min.js"></script>
 
     <style>
         body {
@@ -32,57 +32,93 @@
             background-color: #FDFBF7;
             padding: 40px;
             box-sizing: border-box;
+            font-size: 1.1em;
+            line-height: 1.8;
         }
         #diary .cover-page {
-            background-color: #333;
-            display: flex; justify-content: center; align-items: center;
-            color: white; font-size: 2em;
+            background-color: #333; /* We will replace this with your photo */
         }
+        
+        /* Style for the visible page corners */
+        #diary .turn-page-wrapper .corner {
+            background-color: #fff;
+            opacity: 0.4;
+            border: 1px solid #ccc;
+            box-shadow: -5px -5px 15px rgba(0,0,0,0.3);
+        }
+        #diary .turn-page-wrapper .corner.hover {
+            opacity: 0.8;
+        }
+
         h1 { font-size: 2em; margin-bottom: 1em; }
-        p { font-size: 1.1em; line-height: 1.8; }
     </style>
 </head>
 <body>
 
     <div id="diary-container">
         <div id="diary">
-            <div class="cover-page"><p>My Diary</p></div>
-            <div></div>
-            <div class="page"><h1>(1) The Introduction</h1><p>Lorem ipsum dolor sit amet...</p></div>
-            <div class="page"><p>Cras elementum ultrices diam...</p></div>
-            <div class="page"><h1>(2) The Diagnosis</h1><p>Duis semper. Duis arcu massa...</p></div>
-            <div class="page"><p>Cras vestibulum bibendum augue...</p></div>
-            <div></div>
+            
+            <!-- ====================================================== -->
+            <!-- FRONT COVER                                            -->
+            <!-- ====================================================== -->
+            <!-- We will replace this div later with your actual cover photo -->
+            <div class="cover-page"></div>
+
+            <!-- Inside front cover - intentionally blank -->
+            <div class="page"></div>
+
+            <!-- ====================================================== -->
+            <!-- SPREAD 1: Introduction (Part 1 & 2)                    -->
+            <!-- ====================================================== -->
+            <!-- Left Page -->
+            <div class="page">
+                <h1>(1) The Introduction</h1>
+                <p>[Your text for Part 1 goes here. This is where you feel lost, disconnected from your past achievements, and ask "What happened to me?"]</p>
+            </div>
+            <!-- Right Page -->
+            <div class="page">
+                <h1>(2) The Diagnosis</h1>
+                <p>[Your text for Part 2 goes here. The raw shock of the diagnosis and the decision to cling to VGU as the only way out.]</p>
+            </div>
+
+            <!-- ====================================================== -->
+            <!-- SPREAD 2: The Failure (Part 3 & 4)                     -->
+            <!-- ====================================================== -->
+            <!-- Left Page -->
+            <div class="page">
+                <h1>(3) The Failure</h1>
+                <p>[Your text for Part 3 goes here. The low point at VGU, the loneliness, the concrete walls, and the feeling of doing everything right but still failing.]</p>
+            </div>
+            <!-- Right Page -->
+            <div class="page">
+                <h1>(4) The Pivot</h1>
+                <p>[Your text for Part 4 goes here. The short, defiant spark. The "Sisyphus" moment. The refusal to give up, ending with "What am I capable of?"]</p>
+            </div>
+
+            <!-- ====================================================== -->
+            <!-- And so on... you can add more spreads following this pattern -->
+            <!-- ====================================================== -->
+
+
+            <!-- Inside back cover - intentionally blank -->
+            <div class="page"></div>
+
+            <!-- Back cover -->
             <div class="cover-page"></div>
         </div>
     </div>
 
-    <!-- The JavaScript now uses the standard, more reliable jQuery "ready" function -->
     <script type="text/javascript">
-        // This is the new, better starting signal. It waits for the DOM and jQuery to be fully ready.
         $(function() {
-            console.log("jQuery is ready. Attempting to start diary...");
-
-            const container = $('#diary-container');
-            const bookWidth = container.width();
-            const bookHeight = container.height();
-
-            // This condition checks if the turn.js function exists
-            if (typeof $.fn.turn !== 'undefined') {
-                console.log("Success! Turn.js library is loaded.");
-                console.log("Initializing diary with width:", bookWidth, "and height:", bookHeight);
-
-                $('#diary').turn({
-                    width: bookWidth,
-                    height: bookHeight,
-                    autoCenter: true,
-                    acceleration: true,
-                    elevation: 50,
-                    gradients: true
-                });
-            } else {
-                console.error("ERROR: Turn.js library function was not found.");
-            }
+            $('#diary').turn({
+                width: $('#diary-container').width(),
+                height: $('#diary-container').height(),
+                display: 'double',
+                autoCenter: true,
+                acceleration: true,
+                elevation: 50,
+                gradients: true
+            });
         });
     </script>
 
