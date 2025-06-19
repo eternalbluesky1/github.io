@@ -12,6 +12,7 @@
             background-color: #3d352a;
             background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/wood-pattern.png');
             display: flex;
+            flex-direction: column; /* Changed to allow button placement below */
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -40,7 +41,6 @@
         }
         h1 { font-size: 2em; margin-bottom: 1em; color: #1a1a1a;}
 
-        /* This makes the page-turn corners visible and interactive. */
         #diary .turn-page-wrapper {
             background: linear-gradient(45deg, #fdfbf7 85%, #d9d6d1 100%);
             box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
@@ -48,54 +48,58 @@
         #diary .p-right .turn-page-wrapper {
             background: linear-gradient(-45deg, #fdfbf7 85%, #d9d6d1 100%);
         }
+
+        /* --- NEW CSS FOR NAVIGATION BUTTONS --- */
+        #navigation {
+            margin-top: 20px; /* Space between diary and buttons */
+        }
+        .nav-button {
+            background-color: #fdfbf7;
+            color: #333;
+            border: 2px solid #333;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .nav-button:hover {
+            background-color: #333;
+            color: #fdfbf7;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="diary-container">
         <div id="diary">
-            
             <div class="cover-page"></div>
-
             <div class="page"></div>
-
-            <div class="page">
-                <h1>(1) The Introduction</h1>
-                <p>Adrift in a sea of days that blurred into one another, the question echoed in the quiet moments: "What happened to me?" The path I had so carefully mapped seemed to vanish beneath my feet. Each morning brought not a sunrise, but a grey haze of uncertainty. The world kept spinning, but I felt stuck, a silent observer to a life I no longer recognized as my own. There was a profound sense of disconnect, as if watching a film about a stranger.</p>
-            </div>
-            <div class="page">
-                <h1>(2) The Diagnosis</h1>
-                <p>Then came the words that fractured my reality. A clinical term, delivered with professional calm, shattered my world into a million pieces. The sound in the room faded to a dull roar, a static hum that drowned out everything else. In the ensuing shock, I clung to the familiar walls of VGU, a fortress of routine in a suddenly hostile world. It was my only anchor, a desperate attempt to pretend that nothing had changed, even as the ground had irrevocably shifted beneath me.</p>
-            </div>
-
-            <div class="page">
-                <h1>(3) The Failure</h1>
-                <p>The walls of my fortress began to crumble. The academic pressures at VGU, once a welcome challenge, now felt like insurmountable peaks. Every assignment was a reminder of my cognitive fog, every deadline a new source of anxiety. This was my low point. The path I had clung to for safety became the very stage of my unraveling. It felt like a profound, personal failure, a confirmation of the fear that I was no longer capable, no longer myself.</p>
-            </div>
-            <div class="page">
-                <h1>(4) The Pivot</h1>
-                <p>But in that darkness, a flicker. A tiny, defiant spark of "no." No, this would not be the end of my story. It wasn't a grand revelation, but a stubborn refusal to be defined by my circumstances. The weight of failure was immense, but the thought of surrendering was heavier still. It was a conscious choice to turn my face towards a different light, even if I couldn't yet see its source. This was not giving up; it was pivoting. It was the start of a fight.</p>
-            </div>
-            
-            <div class="page">
-                <h1>(5) The New Direction</h1>
-                <p>That spark led me somewhere unexpected. The name "RMIT" appeared, first as a whisper, then as a tangible possibility. It represented not a replacement for my old path, but an entirely new map. Exploring this new direction felt like breathing fresh air after being underwater. A new sense of purpose began to take root, one that wasn't about reclaiming what was lost, but about building something new and uniquely my own. The future, once a source of dread, now held a hint of promise.</p>
-            </div>
-             <div class="page">
-                <h1>(6) The Resolve</h1>
-                <p>Looking back, I see the threads connecting every moment. The confusion, the shock, the failure—they were not just obstacles, but crucibles. The skills I have today were forged in those fires. My ability to adapt, my empathy, my sheer tenacity—these are not just items on a resume; they are proof of my resilience. I no longer see a story of what was lost. I see the story of a person who was tested, who bent but did not break, and who learned to build a stronger foundation from the rubble.</p>
-            </div>
-            
+            <div class="page"><h1>(1) The Introduction</h1><p>Adrift in a sea of days that blurred into one another, the question echoed in the quiet moments: "What happened to me?" The path I had so carefully mapped seemed to vanish beneath my feet. Each morning brought not a sunrise, but a grey haze of uncertainty. The world kept spinning, but I felt stuck, a silent observer to a life I no longer recognized as my own. There was a profound sense of disconnect, as if watching a film about a stranger.</p></div>
+            <div class="page"><h1>(2) The Diagnosis</h1><p>Then came the words that fractured my reality. A clinical term, delivered with professional calm, shattered my world into a million pieces. The sound in the room faded to a dull roar, a static hum that drowned out everything else. In the ensuing shock, I clung to the familiar walls of VGU, a fortress of routine in a suddenly hostile world. It was my only anchor, a desperate attempt to pretend that nothing had changed, even as the ground had irrevocably shifted beneath me.</p></div>
+            <div class="page"><h1>(3) The Failure</h1><p>The walls of my fortress began to crumble. The academic pressures at VGU, once a welcome challenge, now felt like insurmountable peaks. Every assignment was a reminder of my cognitive fog, every deadline a new source of anxiety. This was my low point. The path I had clung to for safety became the very stage of my unraveling. It felt like a profound, personal failure, a confirmation of the fear that I was no longer capable, no longer myself.</p></div>
+            <div class="page"><h1>(4) The Pivot</h1><p>But in that darkness, a flicker. A tiny, defiant spark of "no." No, this would not be the end of my story. It wasn't a grand revelation, but a stubborn refusal to be defined by my circumstances. The weight of failure was immense, but the thought of surrendering was heavier still. It was a conscious choice to turn my face towards a different light, even if I couldn't yet see its source. This was not giving up; it was pivoting. It was the start of a fight.</p></div>
+            <div class="page"><h1>(5) The New Direction</h1><p>That spark led me somewhere unexpected. The name "RMIT" appeared, first as a whisper, then as a tangible possibility. It represented not a replacement for my old path, but an entirely new map. Exploring this new direction felt like breathing fresh air after being underwater. A new sense of purpose began to take root, one that wasn't about reclaiming what was lost, but about building something new and uniquely my own. The future, once a source of dread, now held a hint of promise.</p></div>
+            <div class="page"><h1>(6) The Resolve</h1><p>Looking back, I see the threads connecting every moment. The confusion, the shock, the failure—they were not just obstacles, but crucibles. The skills I have today were forged in those fires. My ability to adapt, my empathy, my sheer tenacity—these are not just items on a resume; they are proof of my resilience. I no longer see a story of what was lost. I see the story of a person who was tested, who bent but did not break, and who learned to build a stronger foundation from the rubble.</p></div>
             <div class="page"></div>
             <div class="page"></div>
-            
             <div class="page"></div>
             <div class="cover-page"></div>
         </div>
     </div>
 
+    <div id="navigation">
+        <button id="prev-page" class="nav-button">Previous</button>
+        <button id="next-page" class="nav-button">Next</button>
+    </div>
+
+
     <script type="text/javascript">
         $(function() {
+            // --- NEW: Initialize the diary with larger corners ---
             $('#diary').turn({
                 width: $('#diary-container').width(),
                 height: $('#diary-container').height(),
@@ -103,7 +107,17 @@
                 autoCenter: true,
                 acceleration: true,
                 elevation: 50,
-                gradients: true, // This enables the gradients for the page fold effect
+                gradients: true,
+                cornerSize: 100 // This makes the clickable corner 100x100 pixels
+            });
+
+            // --- NEW: Add click events for the navigation buttons ---
+            $('#prev-page').on('click', function() {
+                $('#diary').turn('previous');
+            });
+
+            $('#next-page').on('click', function() {
+                $('#diary').turn('next');
             });
         });
     </script>
