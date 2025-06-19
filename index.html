@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Diary by Phát Bùi</title>
-    <!-- Using our reliable local library files -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/turn.min.js"></script>
 
@@ -18,6 +17,7 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
+            font-family: 'Georgia', serif; /* A more classic book font */
         }
         #diary-container {
             width: 80vw;
@@ -34,10 +34,57 @@
             box-sizing: border-box;
             font-size: 1.1em;
             line-height: 1.8;
+            color: #3a3a3a; /* Softer than pure black */
         }
+        /* Style for the front and back covers */
         #diary .cover-page {
-            background-color: #333;
+            background: linear-gradient(45deg, #4a3c2a, #2a2015);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #f0e5d8;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
         }
+        #diary .cover-page h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+        }
+        #diary .cover-page h2 {
+            font-size: 1.5em;
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        /* Page content styling */
+        .page h1 { 
+            font-size: 1.8em; 
+            margin-bottom: 0.5em; 
+            color: #594736;
+            border-bottom: 1px solid #dcd1c3;
+            padding-bottom: 10px;
+        }
+        .page .date {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 2em;
+        }
+        .page p {
+            text-indent: 2em; /* Indent first line of paragraphs */
+        }
+        .dedication {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Turn.js corner styling (from your original code) */
         #diary .turn-page-wrapper .corner {
             background-color: #fff;
             opacity: 0.4;
@@ -47,63 +94,95 @@
         #diary .turn-page-wrapper .corner.hover {
             opacity: 0.8;
         }
-        h1 { font-size: 2em; margin-bottom: 1em; }
+
     </style>
 </head>
 <body>
 
     <div id="diary-container">
-        <!-- The library will work on this div. It only contains page divs. -->
         <div id="diary">
             
-            <!-- Page 1: Front Cover -->
-            <div class="cover-page"></div>
+            <!-- FRONT COVER -->
+            <div class="cover-page">
+                <h1>Fragments & Fortitude</h1>
+                <h2>A Diary by Phát Bùi</h2>
+            </div>
 
-            <!-- Page 2: Inside front cover (intentionally blank) -->
-            <div class="page"></div>
+            <!-- INSIDE FRONT COVER / DEDICATION PAGE -->
+            <div class="page">
+                <p class="dedication">For anyone who has ever had to begin again.</p>
+            </div>
 
-            <!-- Page 3 & 4: Spread 1 -->
+            <!-- PAGE 1 -->
             <div class="page">
                 <h1>(1) The Introduction</h1>
-                <p>[Your text for Part 1 goes here. This is where you feel lost and ask "What happened to me?"]</p>
+                <p class="date">An entry from a lost time...</p>
+                <p>There are days, weeks, maybe even months, where you feel like a passenger in your own life. The world moves in a blur, a series of muted colors and muffled sounds. I would wake up, go through motions I couldn't fully connect with, and fall asleep with a profound sense of dislocation. It felt like watching a film about someone who looked like me, but whose script I'd lost. The central, nagging question echoed in the quiet moments: "What happened to me? How did I get here?"</p>
             </div>
+
+            <!-- PAGE 2 -->
             <div class="page">
                 <h1>(2) The Diagnosis</h1>
-                <p>[Your text for Part 2 goes here. The shock of the diagnosis and clinging to VGU.]</p>
+                <p class="date">The day the world tilted.</p>
+                <p>A diagnosis is a strange thing. It's just a word, spoken in a sterile room, but it lands with the weight of a physical blow. It rearranged the molecules in the air around me. In the ensuing shock, my first instinct wasn't to understand, but to cling to something solid, something normal. That was VGU. It was my plan, my future, the one thing that was supposed to be certain. I held onto it like a shipwreck survivor clutching a piece of driftwood, believing if I could just hold on tight enough, the storm would pass and I'd find myself back on course.</p>
             </div>
 
-            <!-- Page 5 & 6: Spread 2 -->
+            <!-- PAGE 3 -->
             <div class="page">
                 <h1>(3) The Failure</h1>
-                <p>[Your text for Part 3 goes here. The low point at VGU.]</p>
+                <p class="date">Rock bottom.</p>
+                <p>You can't fight a storm with sheer will. The foundations I thought were so strong began to crack. My focus shattered, my energy vanished, and the deadlines at VGU flew past me like ghosts. Every failed exam, every missed class felt like a personal indictment. It wasn't just an academic failure; it felt like a moral one. I had hit the low point, the place I feared most, where the world's expectations and my own reality were separated by an impossible chasm. The dream was over.</p>
             </div>
+
+            <!-- PAGE 4 -->
             <div class="page">
                 <h1>(4) The Pivot</h1>
-                <p>[Your text for Part 4 goes here. The defiant spark and the refusal to give up.]</p>
+                <p class="date">The first spark.</p>
+                <p>In the quiet after the crash, something unexpected happened. After weeks of resignation, a tiny, defiant spark flickered to life. It was a whisper that said, "No." It wasn't a grand revelation, just a simple refusal. A refusal to let a diagnosis or a failed semester be the final chapter of my story. It was the realization that while I couldn't control what had happened *to* me, I still had agency over what I did *next*. This wasn't the end; it was a plot twist I had to write myself.</p>
             </div>
             
-            <!-- Page 7 & 8: Spread 3 -->
+            <!-- PAGE 5 -->
             <div class="page">
                 <h1>(5) The New Direction</h1>
-                <p>[Your text for Part 5 goes here. Discovering RMIT and a new purpose.]</p>
+                <p class="date">Finding a new map.</p>
+                <p>Letting go of VGU was like letting go of an old identity. It was terrifying, but also liberating. I started looking not for what I was *supposed* to do, but for what felt right, right now. That's when I found RMIT. It wasn't just another university; it was a different path entirely, one that resonated with a creative and technical side of me I'd only explored as a hobby. For the first time in a long time, I felt a flicker of genuine excitement. It was the feeling of finding a new map when you thought you were lost in the wilderness for good.</p>
             </div>
-             <div class="page">
+
+            <!-- PAGE 6 -->
+            <div class="page">
                 <h1>(6) The Resolve</h1>
-                <p>[Your text for Part 6 goes here. Re-interpreting your skills as proof of resilience.]</p>
+                <p class="date">Connecting the dots.</p>
+                <p>Looking back, I see it clearly now. The late nights I spent learning to code, the hours poured into small design projects—they weren't distractions. They were my subconscious mind, building a lifeboat. All those skills I had dismissed as unimportant were actually evidence of my own resilience. They were proof that even when I felt I was failing, I was still building, still learning, still creating. They are not just skills on a resume; they are monuments to my own will to endure.</p>
             </div>
 
-            <!-- And so on... you can add more pairs of pages here -->
+            <!-- PAGE 7 - NEW CONTENT -->
+            <div class="page">
+                <h1>(7) The Present</h1>
+                <p class="date">Today.</p>
+                <p>And so, I build this. This digital diary. It feels fitting that the story of my recovery is being told not just with words, but with the very tools I honed in the dark: code and design. It's a fusion of my past and my present. Every line of HTML, every CSS property, every function in the script is a small act of reclamation. I am not just telling the story; I am building the vessel that holds it. This project is the proof of the new direction—a tangible piece of my newfound purpose.</p>
+            </div>
 
-            <!-- Page N-1: Inside back cover (intentionally blank) -->
-            <div class="page"></div>
+            <!-- PAGE 8 - NEW CONTENT -->
+            <div class="page">
+                <h1>(8) The Future</h1>
+                <p class="date">What's next?</p>
+                <p>The future is no longer a source of anxiety. It's a blank page, and for the first time, that feels exciting, not empty. I don't know exactly what it holds, but I know who will be facing it: someone stronger, more resilient, and more self-aware. The journey isn't over, and there will be more storms, I'm sure. But now, I know I can navigate them. I know how to build a lifeboat. I know how to find a new map. And I'm ready to turn the page.</p>
+            </div>
             
-            <!-- Page N: Back Cover -->
+            <!-- BLANK PAGES FOR EFFECT -->
+            <div class="page">
+                <!-- A blank page for reflection. -->
+            </div>
+            <div class="page">
+                <!-- Another blank page. -->
+            </div>
+            
+            <!-- BACK COVER -->
             <div class="cover-page"></div>
         </div>
     </div>
 
     <script type="text/javascript">
-        // This is the definitive, working script.
         $(function() {
             $('#diary').turn({
                 width: $('#diary-container').width(),
