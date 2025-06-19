@@ -17,7 +17,6 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            font-family: 'Georgia', serif; /* A more classic book font */
         }
         #diary-container {
             width: 80vw;
@@ -34,67 +33,21 @@
             box-sizing: border-box;
             font-size: 1.1em;
             line-height: 1.8;
-            color: #3a3a3a; /* Softer than pure black */
+            color: #3b3b3b;
         }
-        /* Style for the front and back covers */
         #diary .cover-page {
-            background: linear-gradient(45deg, #4a3c2a, #2a2015);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #f0e5d8;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            background-color: #333;
         }
-        #diary .cover-page h1 {
-            font-size: 3em;
-            margin-bottom: 0.2em;
-        }
-        #diary .cover-page h2 {
-            font-size: 1.5em;
-            font-weight: normal;
-            font-style: italic;
-        }
+        h1 { font-size: 2em; margin-bottom: 1em; color: #1a1a1a;}
 
-        /* Page content styling */
-        .page h1 { 
-            font-size: 1.8em; 
-            margin-bottom: 0.5em; 
-            color: #594736;
-            border-bottom: 1px solid #dcd1c3;
-            padding-bottom: 10px;
+        /* This makes the page-turn corners visible and interactive. */
+        #diary .turn-page-wrapper {
+            background: linear-gradient(45deg, #fdfbf7 85%, #d9d6d1 100%);
+            box-shadow: -2px 2px 5px rgba(0,0,0,0.2);
         }
-        .page .date {
-            font-style: italic;
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 2em;
+        #diary .p-right .turn-page-wrapper {
+            background: linear-gradient(-45deg, #fdfbf7 85%, #d9d6d1 100%);
         }
-        .page p {
-            text-indent: 2em; /* Indent first line of paragraphs */
-        }
-        .dedication {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            font-style: italic;
-            font-size: 1.2em;
-            color: #666;
-            text-align: center;
-        }
-
-        /* Turn.js corner styling (from your original code) */
-        #diary .turn-page-wrapper .corner {
-            background-color: #fff;
-            opacity: 0.4;
-            border: 1px solid #ccc;
-            box-shadow: -5px -5px 15px rgba(0,0,0,0.3);
-        }
-        #diary .turn-page-wrapper .corner.hover {
-            opacity: 0.8;
-        }
-
     </style>
 </head>
 <body>
@@ -102,82 +55,41 @@
     <div id="diary-container">
         <div id="diary">
             
-            <!-- FRONT COVER -->
-            <div class="cover-page">
-                <h1>Fragments & Fortitude</h1>
-                <h2>A Diary by Phát Bùi</h2>
-            </div>
+            <div class="cover-page"></div>
 
-            <!-- INSIDE FRONT COVER / DEDICATION PAGE -->
-            <div class="page">
-                <p class="dedication">For anyone who has ever had to begin again.</p>
-            </div>
+            <div class="page"></div>
 
-            <!-- PAGE 1 -->
             <div class="page">
                 <h1>(1) The Introduction</h1>
-                <p class="date">An entry from a lost time...</p>
-                <p>There are days, weeks, maybe even months, where you feel like a passenger in your own life. The world moves in a blur, a series of muted colors and muffled sounds. I would wake up, go through motions I couldn't fully connect with, and fall asleep with a profound sense of dislocation. It felt like watching a film about someone who looked like me, but whose script I'd lost. The central, nagging question echoed in the quiet moments: "What happened to me? How did I get here?"</p>
+                <p>Adrift in a sea of days that blurred into one another, the question echoed in the quiet moments: "What happened to me?" The path I had so carefully mapped seemed to vanish beneath my feet. Each morning brought not a sunrise, but a grey haze of uncertainty. The world kept spinning, but I felt stuck, a silent observer to a life I no longer recognized as my own. There was a profound sense of disconnect, as if watching a film about a stranger.</p>
             </div>
-
-            <!-- PAGE 2 -->
             <div class="page">
                 <h1>(2) The Diagnosis</h1>
-                <p class="date">The day the world tilted.</p>
-                <p>A diagnosis is a strange thing. It's just a word, spoken in a sterile room, but it lands with the weight of a physical blow. It rearranged the molecules in the air around me. In the ensuing shock, my first instinct wasn't to understand, but to cling to something solid, something normal. That was VGU. It was my plan, my future, the one thing that was supposed to be certain. I held onto it like a shipwreck survivor clutching a piece of driftwood, believing if I could just hold on tight enough, the storm would pass and I'd find myself back on course.</p>
+                <p>Then came the words that fractured my reality. A clinical term, delivered with professional calm, shattered my world into a million pieces. The sound in the room faded to a dull roar, a static hum that drowned out everything else. In the ensuing shock, I clung to the familiar walls of VGU, a fortress of routine in a suddenly hostile world. It was my only anchor, a desperate attempt to pretend that nothing had changed, even as the ground had irrevocably shifted beneath me.</p>
             </div>
 
-            <!-- PAGE 3 -->
             <div class="page">
                 <h1>(3) The Failure</h1>
-                <p class="date">Rock bottom.</p>
-                <p>You can't fight a storm with sheer will. The foundations I thought were so strong began to crack. My focus shattered, my energy vanished, and the deadlines at VGU flew past me like ghosts. Every failed exam, every missed class felt like a personal indictment. It wasn't just an academic failure; it felt like a moral one. I had hit the low point, the place I feared most, where the world's expectations and my own reality were separated by an impossible chasm. The dream was over.</p>
+                <p>The walls of my fortress began to crumble. The academic pressures at VGU, once a welcome challenge, now felt like insurmountable peaks. Every assignment was a reminder of my cognitive fog, every deadline a new source of anxiety. This was my low point. The path I had clung to for safety became the very stage of my unraveling. It felt like a profound, personal failure, a confirmation of the fear that I was no longer capable, no longer myself.</p>
             </div>
-
-            <!-- PAGE 4 -->
             <div class="page">
                 <h1>(4) The Pivot</h1>
-                <p class="date">The first spark.</p>
-                <p>In the quiet after the crash, something unexpected happened. After weeks of resignation, a tiny, defiant spark flickered to life. It was a whisper that said, "No." It wasn't a grand revelation, just a simple refusal. A refusal to let a diagnosis or a failed semester be the final chapter of my story. It was the realization that while I couldn't control what had happened *to* me, I still had agency over what I did *next*. This wasn't the end; it was a plot twist I had to write myself.</p>
+                <p>But in that darkness, a flicker. A tiny, defiant spark of "no." No, this would not be the end of my story. It wasn't a grand revelation, but a stubborn refusal to be defined by my circumstances. The weight of failure was immense, but the thought of surrendering was heavier still. It was a conscious choice to turn my face towards a different light, even if I couldn't yet see its source. This was not giving up; it was pivoting. It was the start of a fight.</p>
             </div>
             
-            <!-- PAGE 5 -->
             <div class="page">
                 <h1>(5) The New Direction</h1>
-                <p class="date">Finding a new map.</p>
-                <p>Letting go of VGU was like letting go of an old identity. It was terrifying, but also liberating. I started looking not for what I was *supposed* to do, but for what felt right, right now. That's when I found RMIT. It wasn't just another university; it was a different path entirely, one that resonated with a creative and technical side of me I'd only explored as a hobby. For the first time in a long time, I felt a flicker of genuine excitement. It was the feeling of finding a new map when you thought you were lost in the wilderness for good.</p>
+                <p>That spark led me somewhere unexpected. The name "RMIT" appeared, first as a whisper, then as a tangible possibility. It represented not a replacement for my old path, but an entirely new map. Exploring this new direction felt like breathing fresh air after being underwater. A new sense of purpose began to take root, one that wasn't about reclaiming what was lost, but about building something new and uniquely my own. The future, once a source of dread, now held a hint of promise.</p>
             </div>
-
-            <!-- PAGE 6 -->
-            <div class="page">
+             <div class="page">
                 <h1>(6) The Resolve</h1>
-                <p class="date">Connecting the dots.</p>
-                <p>Looking back, I see it clearly now. The late nights I spent learning to code, the hours poured into small design projects—they weren't distractions. They were my subconscious mind, building a lifeboat. All those skills I had dismissed as unimportant were actually evidence of my own resilience. They were proof that even when I felt I was failing, I was still building, still learning, still creating. They are not just skills on a resume; they are monuments to my own will to endure.</p>
-            </div>
-
-            <!-- PAGE 7 - NEW CONTENT -->
-            <div class="page">
-                <h1>(7) The Present</h1>
-                <p class="date">Today.</p>
-                <p>And so, I build this. This digital diary. It feels fitting that the story of my recovery is being told not just with words, but with the very tools I honed in the dark: code and design. It's a fusion of my past and my present. Every line of HTML, every CSS property, every function in the script is a small act of reclamation. I am not just telling the story; I am building the vessel that holds it. This project is the proof of the new direction—a tangible piece of my newfound purpose.</p>
-            </div>
-
-            <!-- PAGE 8 - NEW CONTENT -->
-            <div class="page">
-                <h1>(8) The Future</h1>
-                <p class="date">What's next?</p>
-                <p>The future is no longer a source of anxiety. It's a blank page, and for the first time, that feels exciting, not empty. I don't know exactly what it holds, but I know who will be facing it: someone stronger, more resilient, and more self-aware. The journey isn't over, and there will be more storms, I'm sure. But now, I know I can navigate them. I know how to build a lifeboat. I know how to find a new map. And I'm ready to turn the page.</p>
+                <p>Looking back, I see the threads connecting every moment. The confusion, the shock, the failure—they were not just obstacles, but crucibles. The skills I have today were forged in those fires. My ability to adapt, my empathy, my sheer tenacity—these are not just items on a resume; they are proof of my resilience. I no longer see a story of what was lost. I see the story of a person who was tested, who bent but did not break, and who learned to build a stronger foundation from the rubble.</p>
             </div>
             
-            <!-- BLANK PAGES FOR EFFECT -->
-            <div class="page">
-                <!-- A blank page for reflection. -->
-            </div>
-            <div class="page">
-                <!-- Another blank page. -->
-            </div>
+            <div class="page"></div>
+            <div class="page"></div>
             
-            <!-- BACK COVER -->
+            <div class="page"></div>
             <div class="cover-page"></div>
         </div>
     </div>
@@ -191,7 +103,7 @@
                 autoCenter: true,
                 acceleration: true,
                 elevation: 50,
-                gradients: true
+                gradients: true, // This enables the gradients for the page fold effect
             });
         });
     </script>
